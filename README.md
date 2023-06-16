@@ -4,3 +4,5 @@
 Techniques used in this project:
 - KNN
 - XGBoost
+- NN: MLP
+- Feature selection

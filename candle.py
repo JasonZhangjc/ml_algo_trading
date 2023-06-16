@@ -8,6 +8,8 @@ from sklearn.metrics import classification_report
 from matplotlib import pyplot
 from xgboost import plot_importance
 from sklearn.feature_selection import SelectFromModel
+from sklearn.neural_network import MLPClassifier
+
 
 
 
@@ -396,6 +398,43 @@ def plot_feature_importance(model):
 
 
 
+def mlp_model(df):
+    '''
+    Use 5-layer MLP to do the prediction
+    '''
+    attributes = ['RSI', 'signalcategory_0', 'signalcategory_1', 'signalcategory_2']
+    X = df[attributes]
+    y = df['Target']
+
+    train_pct_index = int(0.6 * len(X))
+    X_train, X_test = X[:train_pct_index], X[train_pct_index:]
+    y_train, y_test = y[:train_pct_index], y[train_pct_index:]
+
+    NN = MLPClassifier(hidden_layer_sizes=(50, 50, 60, 30, 9), random_state=100, verbose=0, max_iter=1000, activation='relu')
+    NN.fit(X_train, y_train)
+    pred_train = NN.predict(X_train)
+    pred_test = NN.predict(X_test)
+    acc_train = accuracy_score(y_train, pred_train)
+    acc_test = accuracy_score(y_test, pred_test)
+    print("="*20)
+
+    print('****Train Results****')
+    print("Accuracy: {:.4%}".format(acc_train))
+    print('****Test Results****')
+    print("Accuracy: {:.4%}".format(acc_test)) 
+
+    matrix_train = confusion_matrix(y_train, pred_train)
+    matrix_test = confusion_matrix(y_test, pred_test)
+
+    print(matrix_train)
+    print(matrix_test)
+
+    report_train = classification_report(y_train, pred_train)
+    report_test = classification_report(y_test, pred_test)
+
+    print(report_train)
+    print(report_test)
+
 
 
 
@@ -418,15 +457,18 @@ if __name__ == '__main__':
     SLTPRatio=1
     df = get_target(df, barsupfront, pipdiff, SLTPRatio)
     df = target_processing(df)
-    # data preparation for ML models
-    X_train, X_test, y_train, y_test = tt_split(df)
-    # use XGBoost model
-    model, pred_train, pred_test = xgboost_model(X_train, X_test, y_train, y_test)
-    # get metrics
-    get_metrics(model, X_train, X_test, y_train, y_test, pred_train, pred_test)
-    # plot feature importance for the XGBoost model
-    plot_feature_importance(model)
 
+    # # data preparation for XGBoost ML models
+    # X_train, X_test, y_train, y_test = tt_split(df)
+    # # use XGBoost model
+    # model, pred_train, pred_test = xgboost_model(X_train, X_test, y_train, y_test)
+    # # get metrics
+    # get_metrics(model, X_train, X_test, y_train, y_test, pred_train, pred_test)
+    # # plot feature importance for the XGBoost model
+    # plot_feature_importance(model)
+
+    # Use Neural Network Model
+    mlp_model(df)
 
 
 

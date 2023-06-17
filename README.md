@@ -2,7 +2,8 @@
  Machine Learning meets Algorithmic Trading
  
 Techniques used in this project:
-- KNN
+- KNN in sklearn
 - XGBoost
-- NN: MLP
+- MLP in sklearn
 - Feature selection
+- LSTM in tensorflow

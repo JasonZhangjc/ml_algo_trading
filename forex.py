@@ -1,3 +1,17 @@
+'''
+Trend prediction with ML
+KNN:
+    use indicators as axis
+    use nearest neighbor to determine uptrend or downtrend, or undetermined
+    We don't want a lot of undetermined labels in our data 
+    as they provide no trading insights
+    With many undetermined, the accuracy of the ML model can be very high,
+    however, it is a stupid model and does not work well in practice. 
+'''
+
+
+
+
 import pandas as pd
 import numpy as np
 import pandas_ta as ta

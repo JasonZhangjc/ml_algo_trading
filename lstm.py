@@ -1,3 +1,20 @@
+'''
+Use LSTM to predict price instead of trend
+rolling horizon
+moving time window
+Be careful on the data shape
+The results look very appealing but can be very unuseful in practice.
+Thus, predicting the price is not our preference.
+Reason analysis:
+    The close price of tomorrow would not be far away from today's close price.
+    In this senario, the prediction can only be good.
+'''
+
+
+
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd

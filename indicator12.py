@@ -1,3 +1,12 @@
+'''
+Use multiple indicators to train a better model
+and we use plot_importance to display the most important indicators
+for the ML predictions. These indicators can be useful for traders. 
+Prediction precisions are relatively low.
+'''
+
+
+
 import pandas as pd
 import pandas_ta as pa
 from xgboost import XGBClassifier

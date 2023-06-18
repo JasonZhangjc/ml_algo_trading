@@ -1,3 +1,7 @@
+'''
+Use XGBoost and MLP for supervised learning trading trend prediction
+'''
+
 import pandas as pd
 from backtesting import Strategy, Backtest
 import pandas_ta as pa

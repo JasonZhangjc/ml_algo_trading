@@ -8,8 +8,9 @@ Techniques used in this project:
 - Feature selection
 - LSTM in tensorflow
 - Facebook Prophet
+- PCA
 
-Machine learning for trend prediction
+### Machine learning for trend prediction ###
 
 Three takeaways:
 

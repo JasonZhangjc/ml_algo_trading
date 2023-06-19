@@ -9,6 +9,7 @@ Techniques used in this project:
 - LSTM in tensorflow
 - Facebook Prophet
 - PCA
+- Random forest
 
 ### Machine learning for trend prediction ###
 

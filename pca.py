@@ -2,7 +2,7 @@
 RSI indicator + PCA for algo trading
 23 different RSI periods
 Use PCA to reduce the dimension from 23 to 4
-Use least square to predict future prices with the 4 PC
+Use least square to predict future long or short decisions with the 4 PC
 '''
 
 
